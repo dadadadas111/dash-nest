@@ -11,14 +11,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
                 uri: configService.get<string>('MONGODB_URI'),
                 // Connection events for monitoring
                 onConnectionCreate: (connection) => {
+                    const logger = new Logger();
+
                     connection.on('connected', () =>
-                        Logger.log('MongoDB connected successfully'),
+                        logger.log('MongoDB connected successfully', 'DatabaseModule'),
                     );
                     connection.on('disconnected', () =>
-                        Logger.error('MongoDB disconnected'),
+                        logger.error('MongoDB disconnected', 'DatabaseModule'),
                     );
                     connection.on('error', (err) =>
-                        Logger.error(`MongoDB connection error: ${err}`),
+                        logger.error(`MongoDB connection error: ${err}`, 'DatabaseModule'),
                     );
                     return connection;
                 },
