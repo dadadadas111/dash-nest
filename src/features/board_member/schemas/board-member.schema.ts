@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
-import { BaseSchema } from '../../../common/schemas/base.schema';
-import { BoardRole } from 'src/common/enums/board.enum';
+import { BaseSchema } from '@common/schemas/base.schema';
+import { BoardRole } from '@common/enums/board.enum';
 
 export type BoardMemberDocument = HydratedDocument<BoardMember>;
 

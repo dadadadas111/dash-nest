@@ -1,3 +1,4 @@
+import { ApiResponse } from '@common/interfaces/response.interface';
 import {
   ExceptionFilter,
   Catch,
@@ -5,7 +6,6 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { ApiResponse } from 'src/common/interfaces/response.interface';
 
 @Catch(BadRequestException)
 export class ValidationExceptionFilter implements ExceptionFilter {
