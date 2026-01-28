@@ -15,7 +15,8 @@ coverage
 eslint.config.mjs
 commitlint.config.mjs
 README.md
-nest-cli.json
-tsconfig.json
-tsconfig.build.json
-pnpm-lock.yaml
+# We need these for the build stage!
+# nest-cli.json
+# tsconfig.json
+# tsconfig.build.json
+# pnpm-lock.yaml
