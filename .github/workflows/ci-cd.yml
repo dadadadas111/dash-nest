@@ -76,13 +76,13 @@ jobs:
         run: pnpm run build
 
   # ------------------------------------------------------------------
-  # Job 2: Docker Build & Publish (Only on Main)
+  # Job 2: Docker Build & Publish (Only on master)
   # ------------------------------------------------------------------
   build-and-push:
     name: 🐳 Build & Push Docker Image
     needs: check
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
 
     steps:
       - name: Checkout code
