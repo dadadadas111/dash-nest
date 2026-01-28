@@ -13,16 +13,6 @@
     "^@database/(.*)$": "<rootDir>/../src/database/$1",
     "^@shared/(.*)$": "<rootDir>/../src/shared/$1"
   },
-  "globals": {
-    "ts-jest": {
-      "tsconfig": {
-        "baseUrl": "./src",
-        "paths": {
-          "@common/*": ["common/*"],
-          "@features/*": ["features/*"],
-          "@config/*": ["config/*"],
-          "@database/*": ["database/*"],
-          "@shared/*": ["shared/*"]
-        }
-      }
-    }
+  "preset": "ts-jest",
+  "testPathIgnorePatterns": ["/dist/"]
+}
