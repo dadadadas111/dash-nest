@@ -1,0 +1,21 @@
+# Docker Ignore
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.github
+.husky
+node_modules
+npm-debug.log
+dist
+test
+docs
+coverage
+.eslintrc.js
+eslint.config.mjs
+commitlint.config.mjs
+README.md
+nest-cli.json
+tsconfig.json
+tsconfig.build.json
+pnpm-lock.yaml
