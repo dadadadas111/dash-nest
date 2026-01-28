@@ -17,6 +17,7 @@ import { AttachmentModule } from './features/attachment/attachment.module';
 import { ActivityLogModule } from './features/activity_log/activity_log.module';
 import { NotificationModule } from './features/notification/notification.module';
 import { ChecklistModule } from './features/checklist/checklist.module';
+import { AuthModule } from './features/auth/auth.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ChecklistModule } from './features/checklist/checklist.module';
     CacheModule,
     MailModule,
     DatabaseModule,
+    AuthModule,
     // Feature Modules
     UserModule,
     TeamModule,
