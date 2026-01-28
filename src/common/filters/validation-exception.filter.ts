@@ -15,28 +15,33 @@ export class ValidationExceptionFilter implements ExceptionFilter {
     const status = exception.getStatus();
     const exceptionResponse = exception.getResponse();
 
-    let validationErrors: any = {};
+    let validationErrors: Record<string, string | string[]> = {};
 
     if (
       typeof exceptionResponse === 'object' &&
+      exceptionResponse !== null &&
       'message' in exceptionResponse
     ) {
-      const messages = exceptionResponse.message;
+      const responseObj = exceptionResponse as { message: unknown };
+      const messages = responseObj.message;
 
       if (Array.isArray(messages)) {
         // Transform validation errors into a more readable format
-        validationErrors = messages.reduce((acc, msg) => {
-          // Extract field name from error message if possible
-          const match = msg.match(/^(\w+)\s/);
-          const field = match ? match[1] : 'general';
+        validationErrors = (messages as unknown[]).reduce(
+          (acc: Record<string, string[]>, msg: unknown) => {
+            if (typeof msg !== 'string') return acc;
+            // Extract field name from error message if possible
+            const match = msg.match(/^(\w+)\s/);
+            const field = match ? match[1] : 'general';
 
-          if (!acc[field]) {
-            acc[field] = [];
-          }
-          acc[field].push(msg);
-          return acc;
-        }, {});
-      } else {
+            const currentErrors = acc[field] || [];
+            // Safe assignment instead of mutation which caused unsafe return
+            acc[field] = [...currentErrors, msg];
+            return acc;
+          },
+          {} as Record<string, string[]>,
+        ) as Record<string, string[]>;
+      } else if (typeof messages === 'string') {
         validationErrors = { general: messages };
       }
     }

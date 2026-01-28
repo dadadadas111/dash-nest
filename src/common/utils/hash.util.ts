@@ -7,7 +7,7 @@ export class HashUtil {
    * Hash a plain text password
    */
   static async hashPassword(password: string): Promise<string> {
-    return bcrypt.hash(password, this.SALT_ROUNDS);
+    return await bcrypt.hash(password, this.SALT_ROUNDS);
   }
 
   /**
@@ -17,6 +17,6 @@ export class HashUtil {
     password: string,
     hashedPassword: string,
   ): Promise<boolean> {
-    return bcrypt.compare(password, hashedPassword);
+    return await bcrypt.compare(password, hashedPassword);
   }
 }
