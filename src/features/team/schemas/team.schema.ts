@@ -11,8 +11,7 @@ export class TeamSettings {
 
   @Prop({ default: true })
   allowMemberInvite: boolean;
-
-  @Prop({ default: 'private', enum: BoardVisibility })
+  @Prop({ type: String, enum: Object.values(BoardVisibility), default: BoardVisibility.PRIVATE })
   defaultBoardVisibility: BoardVisibility;
 }
 
