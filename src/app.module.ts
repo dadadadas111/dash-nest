@@ -42,4 +42,4 @@ import { ChecklistModule } from './features/checklist/checklist.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
