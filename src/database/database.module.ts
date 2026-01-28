@@ -12,16 +12,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         // Connection events for monitoring
 
         onConnectionCreate: (connection) => {
-          const logger = new Logger();
+          const logger = new Logger('DatabaseModule');
 
           connection.on('connected', () =>
-            logger.log('MongoDB connected successfully', 'DatabaseModule'),
+            logger.log('MongoDB connected successfully'),
           );
           connection.on('disconnected', () =>
-            logger.error('MongoDB disconnected', 'DatabaseModule'),
+            logger.error('MongoDB disconnected'),
           );
           connection.on('error', (err) =>
-            logger.error(`MongoDB connection error: ${err}`, 'DatabaseModule'),
+            logger.error(`MongoDB connection error: ${err}`),
           );
           return connection;
         },
