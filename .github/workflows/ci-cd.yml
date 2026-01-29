@@ -71,6 +71,8 @@ jobs:
         run: pnpm run test:e2e
         env:
           MONGODB_URI: mongodb://localhost:27017/dash-nest-test
+          FIREBASE_SERVICE_ACCOUNT_KEY_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY_JSON }}
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
 
       - name: 🏗️ Build App
         run: pnpm run build
